@@ -7,6 +7,10 @@ var indexRouter = require('./routes/index');
 var quotesRouter = require('./routes/quotes');
 var blokgarduRouter = require('./routes/blokgardu');
 var jointingRouter = require('./routes/jointing');
+var jtmRouter = require('./routes/jtm');
+var jtrRouter = require('./routes/jtr');
+var mvcableRouter = require('./routes/mvcable');
+var mvcellRouter = require('./routes/mvcell');
 
 var app = express();
 
@@ -20,5 +24,9 @@ app.use('/', indexRouter);
 app.use('/quotes', quotesRouter);
 app.use('/blokgardu', blokgarduRouter);
 app.use('/jointing', jointingRouter);
+app.use('/jtm', jtmRouter);
+app.use('/jtr', jtrRouter);
+app.use('/mvcable', mvcableRouter);
+app.use('/mvcell', mvcellRouter);
 
 module.exports = app;
