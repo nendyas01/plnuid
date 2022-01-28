@@ -29,4 +29,6 @@ app.use('/jtr', jtrRouter);
 app.use('/mvcable', mvcableRouter);
 app.use('/mvcell', mvcellRouter);
 
+app.use("/blokgardu/:id",blokgarduRouter);
+
 module.exports = app;
