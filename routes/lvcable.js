@@ -1,26 +1,26 @@
 const express = require('express')
 const router = express.Router();
-const jointing = require('../services/jointing');
+const lvcable = require('../services/lvcable');
 
 /* GET quotes listing. */
 router.get('/', async function(req, res, next) {
     try {
-      res.json(await jointing.getMultiple(req.query.page));
+      res.json(await lvcable.getMultiple(req.query.page));
     } catch (err) {
-      console.error(`Error while getting jointing `, err.message);
+      console.error(`Error while getting lvcable `, err.message);
       res.status(err.statusCode || 500).json({'message': err.message});
     }
   });
 
   router.get("/:assetgroup", async function (req, res, next) {
     try {
-      // res.json(await jointing.getByAssetgroup(req.params.assetgroup));
-      const jo = await jointing.getByAssetgroup(req.params.assetgroup);
-      res.json(jo);
+      // res.json(await lvcable.getByAssetgroup(req.params.assetgroup));
+      const lc = await lvcable.getByAssetgroup(req.params.assetgroup);
+      res.json(lc);
     } catch (err) {
-      console.error(`Error while getting one jointing `, err.message);
+      console.error(`Error while getting one lvcable `, err.message);
       res.status(err.statusCode || 500).json({ message: err.message });
     }
   });
-
+  
   module.exports = router;

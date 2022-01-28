@@ -1,26 +1,26 @@
 const express = require('express')
 const router = express.Router();
-const jointing = require('../services/jointing');
+const busbar = require('../services/busbar');
 
 /* GET quotes listing. */
 router.get('/', async function(req, res, next) {
     try {
-      res.json(await jointing.getMultiple(req.query.page));
+      res.json(await busbar.getMultiple(req.query.page));
     } catch (err) {
-      console.error(`Error while getting jointing `, err.message);
+      console.error(`Error while getting busbar `, err.message);
       res.status(err.statusCode || 500).json({'message': err.message});
     }
   });
 
   router.get("/:assetgroup", async function (req, res, next) {
     try {
-      // res.json(await jointing.getByAssetgroup(req.params.assetgroup));
-      const jo = await jointing.getByAssetgroup(req.params.assetgroup);
-      res.json(jo);
+      // res.json(await busbar.getByAssetgroup(req.params.assetgroup));
+      const bb = await busbar.getByAssetgroup(req.params.assetgroup);
+      res.json(bb);
     } catch (err) {
-      console.error(`Error while getting one jointing `, err.message);
+      console.error(`Error while getting one busbar `, err.message);
       res.status(err.statusCode || 500).json({ message: err.message });
     }
   });
-
+  
   module.exports = router;
