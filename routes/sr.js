@@ -1,26 +1,26 @@
 const express = require('express')
 const router = express.Router();
-const mvcell = require('../services/mvcell');
+const sr = require('../services/sr');
 
 /* GET quotes listing. */
 router.get('/', async function(req, res, next) {
     try {
-      res.json(await mvcell.getMultiple(req.query.page));
+      res.json(await sr.getMultiple(req.query.page));
     } catch (err) {
-      console.error(`Error while getting mvcell `, err.message);
+      console.error(`Error while getting sr `, err.message);
       res.status(err.statusCode || 500).json({'message': err.message});
     }
   });
 
   router.get("/:assetgroup", async function (req, res, next) {
     try {
-      // res.json(await blokgardu.getById(req.params.id));
-      const bg = await mvcell.getByAssetgroup(req.params.assetgroup);
+      // res.json(await sr.getById(req.params.id));
+      const bg = await sr.getByAssetgroup(req.params.assetgroup);
       res.json(bg);
     } catch (err) {
-      console.error(`Error while getting one mvcell `, err.message);
+      console.error(`Error while getting one sr `, err.message);
       res.status(err.statusCode || 500).json({ message: err.message });
     }
   });
-
+  
   module.exports = router;

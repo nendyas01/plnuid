@@ -13,6 +13,10 @@ var mvcableRouter = require('./routes/mvcable');
 var mvcellRouter = require('./routes/mvcell');
 var busbarRouter = require('./routes/busbar');
 var lvcableRouter = require('./routes/lvcable');
+var tiangRouter = require('./routes/tiang');
+var srRouter = require('./routes/sr');
+var pelangganRouter = require('./routes/pelanggan');
+var trafoRouter = require('./routes/trafo');
 
 var app = express();
 
@@ -32,10 +36,20 @@ app.use('/mvcable', mvcableRouter);
 app.use('/mvcell', mvcellRouter);
 app.use('/busbar', busbarRouter);
 app.use('/lvcable', lvcableRouter);
+app.use('/tiang', tiangRouter);
+app.use('/sr', srRouter);
+app.use('/pelanggan', pelangganRouter);
+app.use('/trafo', trafoRouter);
 
 app.use("/blokgardu/:id",blokgarduRouter);
 app.use("/jointing/:assetgroup",jointingRouter);
-app.use("/busbar/:id",busbarRouter);
-app.use("/lvcable/:id",lvcableRouter);
+app.use("/busbar/:assetgroup",busbarRouter);
+app.use("/lvcable/:assetgroup",lvcableRouter);
+app.use("/mvcable/:assetnum",mvcableRouter);
+app.use("/mvcell/:assetgroup",mvcellRouter);
+app.use("/mvcell/:assetgroup",tiangRouter);
+app.use("/sr/:assetgroup",srRouter);
+app.use("/pelanggan/:idpelanggan",pelangganRouter);
+app.use("/trafo/:assetgroup",trafoRouter);
 
 module.exports = app;
